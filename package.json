@@ -1,0 +1,27 @@
+{
+  "name": "video2screenshot",
+  "version": "1.0.0",
+  "description": "fast video screenshot, use offscreencanvas and webworker to speed screenshot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:larryzhuo/video2screenshot.git"
+  },
+  "keywords": [
+    "video",
+    "offscreencanvas",
+    "screenshot",
+    "canvas"
+  ],
+  "author": "larryz",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.24"
+  },
+  "dependencies": {
+  }
+}

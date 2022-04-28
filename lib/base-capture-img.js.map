@@ -1,0 +1,1 @@
+{"version":3,"file":"base-capture-img.js","sourceRoot":"","sources":["../src/base-capture-img.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,OAAO,OAAgB,cAAc;IACxC,YAAY,OAAsB;IAElC,CAAC;IAID,SAAS,CAAC,IAAc;QACpB,OAAO;YACH,IAAI,EAAE,MAAM;YACZ,IAAI,EAAE,IAAI;SACb,CAAA;IACL,CAAC;CACJ"}
