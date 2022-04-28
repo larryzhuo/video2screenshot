@@ -1,42 +1,35 @@
-# zk-leader
-Leader election implement by zookeeper
+# video2screenshot
+fast video screenshot, use offscreencanvas and webworker to speed screenshot。
+if browser not support offscreencanvas api, it will fall back to canvas。 
 
-NodeJs implement follow zookeeper recipe [leader election](https://zookeeper.apache.org/doc/r3.8.0/recipes.html#sc_leaderElection).
+html example:
+```html
+<!DOCTYPE html>
+<html>
+    <head>
 
-javascript example:
-```javascript
-const {LeaderClient} = require('zk-leader');
-const ZooKeeper = require('zookeeper');
-
-async function processBody() {
-    const config = {
-        connect: "127.0.0.1:2181",
-        timeout: 2000,
-        debug_level: ZooKeeper.ZOO_LOG_LEVEL_WARN,
-        host_order_deterministic: false,
-    }
-    let zkClient = new ZooKeeper(config);
-
-    zkClient.on('connect', () => {
-        // start using the client
-        for(let i=0, ilen=10; i<ilen; i++) {
-            let leaderClient = new LeaderClient({
-                zkClient,
-                path: '/elec',
-                hostname: `192.168.0.${i}`
-            });
-            leaderClient.start();
-
-            leaderClient.on('BecomeLenderEvent', (data) => {
-                console.log('该节点成为lender：', data);
-            });
-        }
-    });
+    </head>
+    <body>
+        <video src="https://www.runoob.com/try/demo_source/movie.mp4"></video>
     
-    zkClient.init(config);
-}
-
-processBody();
+        <script type="module" src="../lib/capture-img-factory.js"></script>
+        <script type="module">
+            import CaptureImgFactory from '../lib/capture-img-factory.js';
+            let ins = CaptureImgFactory.getImpl({
+                sourceElement: document.querySelector('video'),
+                width: 720,
+                height: 1080
+            });
+            setInterval(() => {
+                ins.capture({
+                    cb: (data) => {
+                        console.log('screenshot:', data);
+                    }
+                })
+            }, 1000);
+        </script>
+    </body>
+</html>
 ```
 
 more detail please look /example
